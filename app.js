@@ -8,6 +8,7 @@ const Hbs = require('hbs');
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var travelRouter = require('./app_server/routes/travel');
+const mongoose = require('mongoose');
 
 var app = express();
 
@@ -33,6 +34,8 @@ app.use('/travel', travelRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+mongoose.connect('localhost:27017/travlr')
 
 // error handler
 app.use(function(err, req, res, next) {
